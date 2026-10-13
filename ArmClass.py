@@ -22,13 +22,13 @@ class ArmPart():
         
     def print_Arm(self):
         
-        print("Link lengths :")
+        print("Link lengths (Base to Max Reach):")
         
         for link in self.links:
             
             link.print_Link()
             
-        print("Joint rotations:")
+        print("Joint rotations (Base to furthest Node):")
         
         for joint in self.joints:
             
