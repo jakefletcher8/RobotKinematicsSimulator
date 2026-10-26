@@ -5,6 +5,12 @@ Created on Wed Sep  2 15:22:01 2026
 @author: jakef
 
 Arm class to have a defined length and structure to an arm
+
+TO DO: 
+    
+    -Make next vectors originate from the previous vector and make their rotations accordingly
+    
+
 """
 
 import DOFClass as DOF
@@ -135,15 +141,22 @@ class ArmPart():
         y = np.array([0])
         z = np.array([0])
         
+        sum_x = 0
+        sum_y = 0
+        sum_z = 0
+        
         #Iterate through the vectors stored in the arm
         
         for vector in self.vectors:
             
             #Append points into the array
+            sum_x = sum_x + vector.x
+            sum_y = sum_y + vector.y
+            sum_z = sum_z + vector.z
             
-            x = np.append(x,vector.x)
-            y = np.append(y,vector.y)
-            z = np.append(z,vector.z)
+            x = np.append(x,sum_x)
+            y = np.append(y,sum_y)
+            z = np.append(z,sum_z)
         
         
         #plot each of the arrays on the axes
@@ -155,7 +168,6 @@ class ArmPart():
         ax.set_xlabel('X Axis')
         ax.set_ylabel('Y Axis')
         ax.set_zlabel('Z Axis')
-        ax.legend()
 
         # Show the interactive plot window
         mpl.show()
@@ -163,7 +175,11 @@ class ArmPart():
         
         return
     
+    #Function to load a rotation to an axis for a given joint
+    
     def rotate_Joint(self, joint, axis, angle):
+        
+        #If the joint does not exist then return an error
         
         if (joint >= self.joints.size):
             
@@ -171,7 +187,11 @@ class ArmPart():
             
         else:
             
-            self.joints[joint].change_rotation(axis,angle)
+            #Else check the arm's joints and change the corresponding rotation variable 
+            
+            for joint_count in range(joint,self.joints.size):
+            
+                self.joints[joint_count].change_rotation(axis,angle)
         
         return
     
