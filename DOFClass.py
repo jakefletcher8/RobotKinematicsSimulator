@@ -17,6 +17,8 @@ TO DO:
 import rotationFunctions as rF
 import numpy as np
 
+#Joint class to store rotations around each axis to track the kinematics
+
 class Joint():
     def __init__(self,x,y,z):
         
@@ -29,29 +31,42 @@ class Joint():
         print("Joint Created")
         
         
+    #Print the joints rotation values
+        
     def print_Joint(self):
         
         print("X - ", self.x, ", Y - ",self.y, ", Z - ", self.z)
         
+    #Change the rotation of a given axis with a given angle
         
     def change_rotation(self, axis, rotation):
+        
+        #If x is the chosen axis apply a given rotation
         
         if ((axis == 'x') or (axis == 'X')):
             
             self.x = self.x + rotation
             
+        #Same thing but with y 
+            
         elif ((axis == 'y') or (axis == 'Y')):
             
             self.y = self.y + rotation
+            
+        #Same thing but with z
             
         elif ((axis == 'z') or (axis == 'Z')):
             
             self.z = self.z + rotation
         
+        #If an invalid axis is given then print this to terminal for debug
+        
         else: 
             
             print("Invalid axis, please try again")
             
+        
+    #Function used to set all rotations back to 0
         
     def reset_rotations(self):
         

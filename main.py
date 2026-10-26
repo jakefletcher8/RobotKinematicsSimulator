@@ -16,17 +16,20 @@ TO DO:
       
 Arm = ArmC.ArmPart()
 
-Arm.add_Joint()
+Arm.rotate_Joint(0, 'z', 30)
+
+Arm.rotate_Joint(0,'x',45)
+
+Arm.rotate_Joint(1,'z',90)
 
 Arm.add_Joint()
 
-Arm.add_Link(7)
+Arm.rotate_Joint(1,'z',90)
 
-Arm.add_Link(1)
-
-Arm.add_Link(2)
+Arm.plot_Arm()
 
 Arm.print_Arm()
+
 
 
 
