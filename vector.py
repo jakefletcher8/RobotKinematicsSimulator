@@ -63,6 +63,6 @@ class vector():
         
         #round values to remove floating point errors
         
-        self.x = round(new_x)
-        self.y = round(new_y)
-        self.z = round(new_z)
+        self.x = round(new_x,3)
+        self.y = round(new_y,3)
+        self.z = round(new_z,3)

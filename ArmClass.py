@@ -10,7 +10,7 @@ Arm class to have a defined length and structure to an arm
 import DOFClass as DOF
 import numpy as np
 import vector as vect
-import link
+import link as lnk
 import matplotlib.pyplot as mpl
 
 class ArmPart():
@@ -18,7 +18,7 @@ class ArmPart():
         
         #Links are the bits connecting the rotational parts of the robot
         
-        self.links = np.array([link.link(1)])
+        self.links = np.array([lnk.link(1)])
         
         #Joints are the rotational parts of the robot, revolute as of now but prismatic joints should be added
         
@@ -47,7 +47,7 @@ class ArmPart():
             
         #Print all joint rotation values
             
-        print("Joint rotations (Base to furthest Node):")
+        print("Committed Joint rotations (Base to furthest Node):")
         
         for joint in self.joints:
             
@@ -97,7 +97,7 @@ class ArmPart():
             
         #If everything is cool then add the link to the arm
             
-            self.links = np.append(self.links,link.link(length))
+            self.links = np.append(self.links,lnk.link(length))
             
             self.vectors = np.append(self.vectors, vect.vector(length,0,0))
             
@@ -175,4 +175,22 @@ class ArmPart():
         
         return
     
+    #Function to load given joint with an angle around an axis, reload the geometry and then reverse the angle
+    
+    def do_rotation(self, joint, axis, angle):
+        
+        #Initialise the rotation
+        
+        self.rotate_Joint(joint,axis,angle)
+        
+        #Make the change
+        
+        self.refresh_Positions()
+        
+        #Set the committed rotation back to zero
+        
+        self.rotate_Joint(joint,axis,-angle)
+        
+        return
+        
     

@@ -1,6 +1,8 @@
 import ArmClass as ArmC
 import matplotlib.pyplot as mpl
 
+import tkinter as tk
+
 '''
 
 TO DO: 
@@ -17,30 +19,18 @@ TO DO:
 
 Arm = ArmC.ArmPart()
 
-Arm.rotate_Joint(0, 'y', 90)
+Arm.plot_Arm()
 
-
+Arm.do_rotation(0, 'y', 60)
 
 Arm.print_Arm()
 
-Arm.refresh_Positions()
-
-Arm.refresh_Positions()
-
-Arm.refresh_Positions()
-
-Arm.rotate_Joint(0, 'y', -90)
-Arm.rotate_Joint(0, 'z', 90)
-
-
-
-Arm.refresh_Positions()
 
 
 
 Arm.plot_Arm()
 
-Arm.print_Arm()
+
 
 
 
