@@ -108,8 +108,14 @@ class ArmPart():
     
     def refresh_Positions(self):
         
+        count = 0
         
-        
+        for joint in self.joints:
+            
+            self.vectors[count].rotation_matrix('x',joint.x)
+            self.vectors[count].rotation_matrix('y',joint.y)
+            self.vectors[count].rotation_matrix('z',joint.z)
+            count += 1          
         
         return 
     
@@ -142,9 +148,9 @@ class ArmPart():
         
         #plot each of the arrays on the axes
         
-        ax.plot(x,y,z, label='3D Spiral', color='b')
+        ax.plot(x,y,z, label='Arm', color='g')
         
-        #labels
+        #axis labels
         
         ax.set_xlabel('X Axis')
         ax.set_ylabel('Y Axis')

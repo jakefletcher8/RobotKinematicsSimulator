@@ -1,4 +1,5 @@
 import ArmClass as ArmC
+import matplotlib.pyplot as mpl
 
 '''
 
@@ -13,22 +14,37 @@ TO DO:
 
 
 '''
-      
+
 Arm = ArmC.ArmPart()
 
-Arm.rotate_Joint(0, 'z', 30)
+Arm.rotate_Joint(0, 'y', 90)
 
-Arm.rotate_Joint(0,'x',45)
 
-Arm.rotate_Joint(1,'z',90)
 
-Arm.add_Joint()
+Arm.print_Arm()
 
-Arm.rotate_Joint(1,'z',90)
+Arm.refresh_Positions()
+
+Arm.refresh_Positions()
+
+Arm.refresh_Positions()
+
+Arm.rotate_Joint(0, 'y', -90)
+Arm.rotate_Joint(0, 'z', 90)
+
+
+
+Arm.refresh_Positions()
+
+
 
 Arm.plot_Arm()
 
 Arm.print_Arm()
+
+
+
+
 
 
 
